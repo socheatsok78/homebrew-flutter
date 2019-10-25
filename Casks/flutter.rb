@@ -1,6 +1,5 @@
 cask 'flutter' do
     name "Flutter SDK"
-    desc "Manage your Flutter app development."
     homepage "https://flutter.dev/"
 
     version :latest
