@@ -24,9 +24,6 @@ uninstall_flutter() {
     shell_output "Homebrew zapping flutter"
     brew cask zap flutter
 
-    shell_output "Homebrew uninstall flutter"
-    brew cask uninstall flutter
-
     shell_output "Homebrew untapping repositories"
     brew untap socheatsok78/flutter
 }
