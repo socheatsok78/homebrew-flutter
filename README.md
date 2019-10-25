@@ -30,6 +30,11 @@ flutter channel [stable|dev|beta|master]
 flutter upgrade
 ```
 
+## Using Linux?
+Make sure you install Homebrew for linux installed.
+
+Check [Homebrew Documentation](https://docs.brew.sh/Homebrew-on-Linux#install) on how to install **Homebrew on Linux**.
+
 ## See also
 Other people implementation:
 [MiderWong/homebrew-flutter](https://github.com/MiderWong/homebrew-flutter)
