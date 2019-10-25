@@ -8,6 +8,17 @@ shell_output() {
     echo -e "=================================================="
 }
 
+switch_flutter_channel() {
+    local channel=$1
+    shift
+
+    shell_output "Switching to $channel channel"
+    flutter channel $channel
+
+    shell_output "Flutter is on $channel channel"
+    flutter --version
+}
+
 # Step 1
 shell_output "Locating Flutter binary"
 which flutter
@@ -20,20 +31,11 @@ flutter --version
 shell_output "Available Flutter Channels"
 flutter channel
 
-shell_output "Switching to Dev Channel"
-flutter channel dev
+# Switch to Dev Channel
+switch_flutter_channel "dev"
 
-shell_output "Flutter is on Dev Channel"
-flutter --version
+# Switch to Beta Channel
+switch_flutter_channel "beta"
 
-shell_output "Switching to Beta Channel"
-flutter channel beta
-
-shell_output "Flutter is on Beta Channel"
-flutter --version
-
-shell_output "Switching to Master Channel"
-flutter channel master
-
-shell_output "Flutter is on Master Channel"
-flutter --version
+# Switch to Master Channel
+switch_flutter_channel "master"

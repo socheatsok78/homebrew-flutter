@@ -17,4 +17,4 @@ jobs:
         - brew cask install --debug --verbose flutter
         - brew cask info flutter
       script:
-        - ./test/flutter.sh
+        - ./test/case/flutter.sh
