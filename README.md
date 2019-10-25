@@ -19,8 +19,13 @@ brew cask install socheatsok78/flutter/flutter
 ### Uninstall
 To uninstall `flutter` run the following command:
 ```sh
-brew cask zap flutter # Clean all files associated with Flutter SDK
 brew cask uninstall flutter
+```
+
+or, to remove any files and folders `flutter` has created run the following command. This will also uninstall `flutter` as well.
+```sh
+# Clean all files associated with Flutter SDK
+brew cask zap flutter
 ```
 
 ## Switching Flutter Channel
