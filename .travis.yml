@@ -1,0 +1,22 @@
+os: osx
+osx_image: xcode11.2
+
+addons:
+  homebrew:
+    update: true
+
+stages:
+  - mac
+
+jobs:
+  include:
+    - stage: mac
+      name: "Flutter Stable Channel"
+      install:
+        - brew tap socheatsok78/flutter
+        - brew cask install --debug --verbose flutter
+      before_script:
+        - brew cask info flutter
+      script:
+        - which flutter
+        - flutter --version
