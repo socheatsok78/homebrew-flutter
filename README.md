@@ -37,5 +37,5 @@ Check [Homebrew Documentation](https://docs.brew.sh/Homebrew-on-Linux#install) o
 
 ## See also
 Other people implementation:  
-[MiderWong/homebrew-flutter](https://github.com/MiderWong/homebrew-flutter)  
-[flschweiger/homebrew-flutter](https://github.com/flschweiger/homebrew-flutter)
+- [MiderWong/homebrew-flutter](https://github.com/MiderWong/homebrew-flutter)
+- [flschweiger/homebrew-flutter](https://github.com/flschweiger/homebrew-flutter)
