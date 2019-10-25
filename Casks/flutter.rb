@@ -16,7 +16,7 @@ cask 'flutter' do
     zap trash:  [
             '~/.flutter',
             '~/.devtools'
-        ]
+        ],
         rmdir:  [
             '~/.dart',
             '~/.dartServer',
