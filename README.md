@@ -10,12 +10,27 @@ brew tap socheatsok78/flutter
 brew cask install flutter
 ```
 
-## Uninstall
+or 
+
 ```sh
+brew cask install socheatsok78/flutter/flutter
+```
+
+## Uninstall
+To uninstall `flutter` run the following command:
+```sh
+brew cask zap flutter # Clean all files associated with Flutter SDK
 brew cask uninstall flutter
 ```
 
-## Clean all files associated with Flutter SDK
+## Switching Flutter Channel
+To switch to a different channel run the following command:
 ```sh
-brew cask zap flutter
+flutter channel [stable|dev|beta|master]
+flutter upgrade
 ```
+
+## See also
+Other people implementation:
+[MiderWong/homebrew-flutter](https://github.com/MiderWong/homebrew-flutter)
+[flschweiger/homebrew-flutter](https://github.com/flschweiger/homebrew-flutter)
