@@ -20,6 +20,17 @@ switch_flutter_channel() {
     flutter --version
 }
 
+uninstall_flutter() {
+    shell_output "Homebrew zapping flutter"
+    brew cask zap flutter
+
+    shell_output "Homebrew uninstall flutter"
+    brew cask uninstall flutter
+
+    shell_output "Homebrew untapping repositories"
+    brew untap socheatsok78/flutter
+}
+
 # Step 1
 shell_output "Locating Flutter binary"
 which flutter
@@ -40,3 +51,6 @@ switch_flutter_channel "beta"
 
 # Switch to Master Channel
 switch_flutter_channel "master"
+
+# Uninstall & Untap
+uninstall_flutter
