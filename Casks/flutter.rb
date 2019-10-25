@@ -13,5 +13,13 @@ cask 'flutter' do
 
     binary 'flutter/bin/flutter', target: "flutter"
 
-    zap trash: '~/.flutter'
+    zap trash:  [
+            '~/.flutter',
+            '~/.devtools'
+        ]
+        rmdir:  [
+            '~/.dart',
+            '~/.dartServer',
+            '~/.pub-cache'
+        ]
 end
