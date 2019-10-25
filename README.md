@@ -31,7 +31,7 @@ flutter upgrade
 ```
 
 ## Using Linux?
-Make sure you install Homebrew for linux installed.
+Make sure you have Homebrew for linux installed.
 
 Check [Homebrew Documentation](https://docs.brew.sh/Homebrew-on-Linux#install) on how to install **Homebrew on Linux**.
 
