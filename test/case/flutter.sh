@@ -14,7 +14,7 @@ switch_flutter_channel() {
 
     shell_output "Switching to $channel channel"
     flutter channel $channel
-    flutter --version
+    flutter upgrade
 
     shell_output "Flutter is on $channel channel"
     flutter --version
