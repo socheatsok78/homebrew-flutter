@@ -11,7 +11,7 @@ cask 'flutter' do
         url "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.9.1+hotfix.6-stable.tar.xz"
     end
 
-    binary 'flutter/bin/flutter'
+    binary 'flutter/bin/flutter', target: "flutter"
 
     zap trash: '~/.flutter'
 end
