@@ -22,4 +22,10 @@ cask 'flutter' do
             '~/.dartServer',
             '~/.pub-cache'
         ]
+
+    def caveats; <<~EOS
+        Please note the path to the Flutter SDK:
+            #{staged_path}
+        EOS
+    end
 end
