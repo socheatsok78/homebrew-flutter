@@ -15,7 +15,7 @@ get_file_hash() {
 
     local filename="flutter_${os}_${version}-${build}.zip"
 
-    curl -L -o  "https://storage.googleapis.com/flutter_infra/releases/${build}/${os}/${filename}.zip"
+    curl -L -o "$filename" "https://storage.googleapis.com/flutter_infra/releases/${build}/${os}/${filename}.zip"
     shasum -a 256 "$filename"
 }
 
