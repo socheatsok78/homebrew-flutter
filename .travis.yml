@@ -11,7 +11,7 @@ stages:
 jobs:
   include:
     - stage: mac
-      name: "Flutter SDK Generate Hash"
+      name: "Generate Flutter SDK Hash"
       script:
         - ./test/case/flutter-sdk.sh
     - stage: mac
