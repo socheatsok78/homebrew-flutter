@@ -6,12 +6,11 @@ addons:
     update: true
 
 stages:
-  - hash
   - mac
 
 jobs:
   include:
-    - stage: hash
+    - stage: mac
       name: "Flutter SDK Generate Hash"
       script:
         - ./test/case/flutter-sdk.sh
