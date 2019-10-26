@@ -6,10 +6,15 @@ addons:
     update: true
 
 stages:
+  - hash
   - mac
 
 jobs:
   include:
+    - stage: hash
+      name: "Flutter SDK Generate Hash"
+      script:
+        - ./test/case/flutter-sdk.sh
     - stage: mac
       name: "Flutter Stable Channel"
       install:
