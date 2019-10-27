@@ -4,7 +4,40 @@ shell_output() {
     echo -e "=================================================="
 }
 
+function check_brew_installation () {    
+    if [ `command -v brew` ]; then
+        c.success "Homebrew is successfully installed!"
+    else
+        case "$(get_os)" in
+            "Darwin")   brew_install_osx    ;;
+            "Linux")    brew_install_linux  ;;
+            *)          brew_install_osx    ;;
+        esac
+    fi
+}
+
+function brew_install_osx () {
+    local ruby_bin="/usr/bin/ruby"
+    local brew_install_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
+
+    c.info "Installing Homebrew..."
+    $ruby_bin -e "$(curl -fsSL $brew_install_url)"
+    check_brew_installation
+}
+
+function brew_install_linux () {
+    local brew_install_url="https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh"
+
+    c.info "Installing Homebrew Linux..."
+    sh -c "$(curl -fsSL $brew_install_url)"
+    
+    eval $($HOME/.linuxbrew/bin/brew shellenv)
+    check_brew_installation
+}
+
 install_flutter_cask() {
+    check_brew_installation
+    
     brew tap socheatsok78/flutter
     brew cask install --debug --verbose flutter
     brew cask info flutter
