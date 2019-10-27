@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "Brewfile": "ruby",
+        "helper": "shellscript"
+    },
+}
