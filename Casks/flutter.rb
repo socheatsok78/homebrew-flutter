@@ -9,7 +9,7 @@ cask 'flutter' do
         sha256 "8d0b3e217e45fbde64e117c5932ec5bd18ced0e8e8fba80a0fec95e38854bb6a"
     elsif OS.linux?
         url "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.9.1+hotfix.6-stable.tar.xz"
-        sha256 "a09831ba3d90f9dcdf866e341dc547d0b60062154e5ab66d64d97bba8b6d9331"
+        sha256 "b67f530cce561ed76c113921bace82daa6262944f912d177fbd1cc68029fd918"
     end
 
     binary 'flutter/bin/flutter', target: "flutter"
