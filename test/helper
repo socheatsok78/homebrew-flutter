@@ -90,3 +90,35 @@ download_flutter_sdk() {
         -o "./sdk/$filename" \
         $url
 }
+
+
+# ========================================
+# Logger
+# ========================================
+function c.log() {
+    echo -e ">>> $@"
+}
+
+function c.line() {
+    echo -e "\033[92m>>> $@\033[0m"
+}
+
+function c.warn() {
+    echo -e "\033[33m>>> $@\033[0m"
+}
+
+function c.info() {
+    echo -e "\033[94m>>> $@\033[0m"
+}
+
+function c.success() {
+    echo -e "\033[92m>>> $@\033[0m"
+}
+
+function c.danger() {
+    echo -e "\033[1;31m>>> $@\033[0m"
+}
+
+function c.error () {
+    c.danger "$@"
+}
