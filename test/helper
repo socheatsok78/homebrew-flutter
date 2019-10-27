@@ -4,6 +4,10 @@ shell_output() {
     echo -e "=================================================="
 }
 
+function get_os () {
+    uname -s
+}
+
 function check_brew_installation () {    
     if [ `command -v brew` ]; then
         c.success "Homebrew is successfully installed!"
