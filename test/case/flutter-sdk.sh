@@ -8,19 +8,31 @@ shell_output() {
     echo -e "=================================================="
 }
 
-get_file_hash() {
-    local os="$1"
-    local version="$2"
-    local build="$3"
-
-    local filename="flutter_${os}_${version}-${build}.zip"
-
-    shell_output "Downloading for flutter ${os}"
-    curl -L -o "$filename" "https://storage.googleapis.com/flutter_infra/releases/${build}/${os}/${filename}.zip"
-
-    shell_output "Generating hash for flutter ${os}"
-    shasum -a 256 "$filename"
+sha256() {
+    shasum --algorithm 256 "$1"
 }
 
-get_file_hash "macos" "v1.9.1+hotfix.6" "stable"
-get_file_hash "linux" "v1.9.1+hotfix.6" "stable"
+get_file_hash() {
+    local os="$1"
+    local filename="$2"
+    local build=${3:-stable}
+
+    mkdir -p "./download"
+
+    local url="https://storage.googleapis.com/flutter_infra/releases/${build}/${os}/${filename}"
+
+    shell_output "Downloading for flutter ${os}"
+    echo -e "$url\n"
+    curl -L \
+        -o "./download/$filename" \
+        $url
+
+    shell_output "Generating hash for flutter ${os}"
+    sha256 "./download/$filename"
+
+    shell_output "Listing Download Directory"
+    ls -lh
+}
+
+get_file_hash "macos" "flutter_macos_v1.9.1+hotfix.6-stable.zip"
+get_file_hash "linux" "flutter_linux_v1.9.1+hotfix.6-stable.tar.xz"
