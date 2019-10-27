@@ -8,6 +8,7 @@ addons:
 stages:
   - hash
   - mac
+  - linux
 
 jobs:
   include:
