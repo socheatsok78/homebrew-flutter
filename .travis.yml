@@ -6,12 +6,15 @@ addons:
     update: true
 
 stages:
+  - hash
   - mac
 
 jobs:
   include:
-    - stage: mac
+    - stage: hash
       name: "Generate Flutter SDK Hash"
+      os: linux
+      dist: trusty
       script:
         - ./test/case/flutter-sdk.sh
     - stage: mac
@@ -28,5 +31,49 @@ jobs:
         - ./test/case/flutter-dev.sh
     - stage: mac
       name: "Flutter Master Channel"
+      script:
+        - ./test/case/flutter-master.sh
+    - stage: linux
+      name: "Flutter Stable Channel for Linux"
+      os: linux
+      dist: trusty
+      language: ruby
+      rvm:
+        - 2.4.1
+      before_script:
+        - export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+      script:
+        - ./test/case/flutter.sh
+    - stage: linux
+      name: "Flutter Beta Channel for Linux"
+      os: linux
+      dist: trusty
+      language: ruby
+      rvm:
+        - 2.4.1
+      before_script:
+        - export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+      script:
+        - ./test/case/flutter-beta.sh
+    - stage: linux
+      name: "Flutter Dev Channel for Linux"
+      os: linux
+      dist: trusty
+      language: ruby
+      rvm:
+        - 2.4.1
+      before_script:
+        - export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+      script:
+        - ./test/case/flutter-dev.sh
+    - stage: linux
+      name: "Flutter Master Channel for Linux"
+      os: linux
+      dist: trusty
+      language: ruby
+      rvm:
+        - 2.4.1
+      before_script:
+        - export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
       script:
         - ./test/case/flutter-master.sh
