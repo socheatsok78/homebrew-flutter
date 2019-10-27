@@ -16,9 +16,17 @@ jobs:
         - ./test/case/flutter-sdk.sh
     - stage: mac
       name: "Flutter Stable Channel"
-      install:
-        - brew tap socheatsok78/flutter
-        - brew cask install --debug --verbose flutter
-        - brew cask info flutter
       script:
         - ./test/case/flutter.sh
+    - stage: mac
+      name: "Flutter Beta Channel"
+      script:
+        - ./test/case/flutter-beta.sh
+    - stage: mac
+      name: "Flutter Dev Channel"
+      script:
+        - ./test/case/flutter-dev.sh
+    - stage: mac
+      name: "Flutter Master Channel"
+      script:
+        - ./test/case/flutter-master.sh

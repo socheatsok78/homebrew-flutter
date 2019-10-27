@@ -1,0 +1,59 @@
+shell_output() {
+    echo -e "=================================================="
+    echo -e "| $@"
+    echo -e "=================================================="
+}
+
+install_flutter_cask() {
+    brew tap socheatsok78/flutter
+    brew cask install --debug --verbose flutter
+    brew cask info flutter
+}
+
+switch_flutter_channel() {
+    local channel=$1
+    shift
+
+    shell_output "Switching to $channel channel"
+    flutter channel $channel
+    flutter upgrade
+
+    shell_output "Flutter is on $channel channel"
+    flutter --version
+}
+
+uninstall_flutter() {
+    shell_output "Homebrew zapping flutter"
+    brew cask zap flutter
+
+    shell_output "Homebrew untapping repositories"
+    brew untap socheatsok78/flutter
+}
+
+sha256() {
+    shasum --algorithm 256 "$1"
+}
+
+hash_files() {
+    folder=$1
+    for filename in "$folder"/*; do
+        sha256 "$filename"
+    done
+}
+
+download_flutter_sdk() {
+    local os="$1"
+    local filename="$2"
+    local build=${3:-stable}
+
+    mkdir -p "./sdk"
+
+    local url="https://storage.googleapis.com/flutter_infra/releases/${build}/${os}/${filename}"
+
+    shell_output "Downloading for flutter ${os}"
+    echo -e "$url\n"
+
+    curl -L \
+        -o "./sdk/$filename" \
+        $url
+}
