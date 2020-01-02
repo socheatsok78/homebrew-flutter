@@ -4,7 +4,14 @@ set -e
 
 source ./test/helper
 
-install_flutter_cask
+case "$TRAVIS_OS_NAME" in
+    "linux")
+        install_flutter_formula
+    ;;
+    *)
+        install_flutter_cask
+    ;;
+esac
 
 # Step 1
 shell_output "Locating Flutter binary"
