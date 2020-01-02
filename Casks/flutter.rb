@@ -3,13 +3,13 @@ cask 'flutter' do
     homepage "https://flutter.dev/"
 
     version :latest
-    
+
     if OS.mac?
-        url "https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_v1.9.1+hotfix.6-stable.zip"
-        sha256 "8d0b3e217e45fbde64e117c5932ec5bd18ced0e8e8fba80a0fec95e38854bb6a"
+        url "https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_v1.12.13+hotfix.5-stable.zip"
+        sha256 "78a0c5a757df74800e3c11632d4b8d2818904f0ceb075d9a2ab44ee74af6e67c"
     elsif OS.linux?
-        url "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.9.1+hotfix.6-stable.tar.xz"
-        sha256 "b67f530cce561ed76c113921bace82daa6262944f912d177fbd1cc68029fd918"
+        url "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.12.13+hotfix.5-stable.tar.xz"
+        sha256 "d792c92895623da35e1a9ccd8bc2fe84c81dd72c2c54073f56fe70625866d800"
     end
 
     binary 'flutter/bin/flutter', target: "flutter"
