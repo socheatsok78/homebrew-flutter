@@ -2,25 +2,13 @@
 
 set -e
 
-shell_output() {
-    echo -e "=================================================="
-    echo -e "| $@"
-    echo -e "=================================================="
-}
+source ./test/helper
 
-get_file_hash() {
-    local os="$1"
-    local version="$2"
-    local build="$3"
+download_flutter_sdk "macos" "flutter_macos_v1.12.13+hotfix.5-stable.zip"
+download_flutter_sdk "linux" "flutter_linux_v1.12.13+hotfix.5-stable.tar.xz"
 
-    local filename="flutter_${os}_${version}-${build}.zip"
+shell_output "Generating hash for flutter ${os}"
+hash_files "sdk"
 
-    shell_output "Downloading for flutter ${os}"
-    curl -L -o "$filename" "https://storage.googleapis.com/flutter_infra/releases/${build}/${os}/${filename}.zip"
-
-    shell_output "Generating hash for flutter ${os}"
-    shasum -a 256 "$filename"
-}
-
-get_file_hash "macos" "v1.9.1+hotfix.6" "stable"
-get_file_hash "linux" "v1.9.1+hotfix.6" "stable"
+shell_output "Listing Download Directory"
+ls -lh "./sdk"

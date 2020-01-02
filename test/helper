@@ -1,0 +1,135 @@
+shell_output() {
+    echo -e "=================================================="
+    echo -e "| $@"
+    echo -e "=================================================="
+}
+
+function get_os () {
+    uname -s
+}
+
+function check_brew_installation () {
+    if [ `command -v brew` ]; then
+        c.success "Homebrew is successfully installed!"
+    else
+        case "$(get_os)" in
+            "Darwin")   brew_install_osx    ;;
+            "Linux")    brew_install_linux  ;;
+            *)          brew_install_osx    ;;
+        esac
+    fi
+}
+
+function brew_install_osx () {
+    local ruby_bin="/usr/bin/ruby"
+    local brew_install_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
+
+    c.info "Installing Homebrew..."
+    $ruby_bin -e "$(curl -fsSL $brew_install_url)"
+    check_brew_installation
+}
+
+function brew_install_linux () {
+    local brew_install_url="https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh"
+
+    c.info "Installing Homebrew Linux..."
+    sh -c "$(curl -fsSL $brew_install_url)"
+
+    eval $($HOME/.linuxbrew/bin/brew shellenv)
+    check_brew_installation
+}
+
+install_flutter_cask() {
+    check_brew_installation
+
+    brew tap socheatsok78/flutter
+    brew cask install --debug --verbose flutter
+    brew cask info flutter
+}
+
+install_flutter_formula() {
+    check_brew_installation
+
+    brew install --debug --verbose flutter
+    brew info flutter
+}
+
+switch_flutter_channel() {
+    local channel=$1
+    shift
+
+    shell_output "Switching to $channel channel"
+    flutter channel $channel
+    flutter upgrade
+
+    shell_output "Flutter is on $channel channel"
+    flutter --version
+}
+
+uninstall_flutter() {
+    shell_output "Homebrew zapping flutter"
+    brew cask zap flutter
+
+    shell_output "Homebrew untapping repositories"
+    brew untap socheatsok78/flutter
+}
+
+sha256() {
+    shasum --algorithm 256 "$1"
+}
+
+hash_files() {
+    folder=$1
+    for filename in "$folder"/*; do
+        sha256 "$filename"
+    done
+}
+
+download_flutter_sdk() {
+    local os="$1"
+    local filename="$2"
+    local build=${3:-stable}
+
+    mkdir -p "./sdk"
+
+    local url="https://storage.googleapis.com/flutter_infra/releases/${build}/${os}/${filename}"
+
+    shell_output "Downloading for flutter ${os}"
+    echo -e "$url\n"
+
+    curl -L \
+        -o "./sdk/$filename" \
+        $url
+}
+
+
+# ========================================
+# Logger
+# ========================================
+function c.log() {
+    echo -e ">>> $@"
+}
+
+function c.line() {
+    echo -e "\033[92m>>> $@\033[0m"
+}
+
+function c.warn() {
+    echo -e "\033[33m>>> $@\033[0m"
+}
+
+function c.info() {
+    echo -e "\033[94m>>> $@\033[0m"
+}
+
+function c.success() {
+    echo -e "\033[92m>>> $@\033[0m"
+}
+
+function c.danger() {
+    echo -e "\033[1;31m>>> $@\033[0m"
+}
+
+function c.error () {
+    c.danger "$@"
+}
