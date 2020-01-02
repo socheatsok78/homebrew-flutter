@@ -50,6 +50,7 @@ install_flutter_cask() {
 install_flutter_formula() {
     check_brew_installation
 
+    brew tap socheatsok78/flutter
     brew install --debug --verbose flutter
     brew info flutter
 }
