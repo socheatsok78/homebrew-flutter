@@ -2,12 +2,16 @@ cask 'flutter' do
     name "Flutter SDK"
     homepage "https://flutter.dev/"
 
-    version 'v1.12.13+hotfix.5'
-    sha256 "78a0c5a757df74800e3c11632d4b8d2818904f0ceb075d9a2ab44ee74af6e67c"
+    version '1.20.4'
+    sha256 "08fcbcc9c902bc6f245d660b6d68f1da420fbdd5878902b5687961a5fb43e9f7"
 
     url "https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_#{version}-stable.zip"
 
-    binary 'flutter/bin/flutter', target: "flutter"
+    binary "flutter/bin/dart"
+    binary 'flutter/bin/flutter'
+    
+    auto_updates true
+    depends_on macos: ">= :catalina"
 
     # https://github.com/MiderWong/homebrew-flutter/blob/master/Formula/flutter.rb#L19-L29
     def preflight
