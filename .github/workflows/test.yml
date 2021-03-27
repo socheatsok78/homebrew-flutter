@@ -21,7 +21,10 @@ jobs:
       run: brew tap socheatsok78/flutter
 
     - name: Run brew install --cask socheatsok78/flutter/flutter
-      run: brew install --cask socheatsok78/flutter/flutter
+      run: |
+        brew install \
+            --verbose --debug \
+            --cask socheatsok78/flutter/flutter
 
     - name: Run flutter --version
       run: flutter --version
