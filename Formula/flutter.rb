@@ -5,26 +5,24 @@ class Flutter < Formula
 
     stable do
         version "2.0.3"
-        channel "stable"
 
         if OS.mac?
-            url "https://storage.googleapis.com/flutter_infra/releases/#{channel}/macos/flutter_macos_#{version}-#{channel}.zip"
+            url "https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_#{version}-stable.zip"
             sha256 :no_check
         elsif OS.linux?
-            url "https://storage.googleapis.com/flutter_infra/releases/#{channel}/linux/flutter_linux_#{version}-#{channel}.tar.xz"
+            url "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_#{version}-stable.tar.xz"
             sha256 :no_check
         end
     end
 
     devel do
         version "2.1.0-12.2.pre"
-        channel "beta"
 
         if OS.mac?
-            url "https://storage.googleapis.com/flutter_infra/releases/#{channel}/macos/flutter_macos_#{version}-#{channel}.zip"
+            url "https://storage.googleapis.com/flutter_infra/releases/beta/macos/flutter_macos_#{version}-beta.zip"
             sha256 :no_check
         elsif OS.linux?
-            url "https://storage.googleapis.com/flutter_infra/releases/#{channel}/linux/flutter_linux_#{version}-#{channel}.tar.xz"
+            url "https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_#{version}-beta.tar.xz"
             sha256 :no_check
         end
     end
