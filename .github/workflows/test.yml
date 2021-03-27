@@ -22,3 +22,9 @@ jobs:
 
     - name: Run brew cask install socheatsok78/flutter/flutter
       run: brew cask install socheatsok78/flutter/flutter
+
+    - name: Run flutter --version
+      run: flutter --version
+
+    - name: Run flutter doctor
+      run: flutter doctor
