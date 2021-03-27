@@ -1,0 +1,24 @@
+name: Brew installer test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os-version }}
+
+    strategy:
+      matrix:
+        os-version: [macos-10.15, macos-11.0]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run brew tap socheatsok78/flutter
+      run: brew tap socheatsok78/flutter
+
+    - name: Run brew cask install socheatsok78/flutter/flutter
+      run: brew cask install socheatsok78/flutter/flutter
