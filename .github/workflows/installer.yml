@@ -1,4 +1,4 @@
-name: Brew installer test
+name: installer
 
 on:
   push:
