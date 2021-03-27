@@ -7,26 +7,11 @@ cask 'flutter' do
 
     url "https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_#{version}-stable.zip"
 
-    binary "flutter/bin/dart"
-    binary 'flutter/bin/flutter'
-
     auto_updates true
     depends_on macos: ">= :catalina"
 
-    # https://github.com/MiderWong/homebrew-flutter/blob/master/Formula/flutter.rb#L19-L29
-    def preflight
-        current_ip = `curl http://api.db-ip.com/v2/free/self/ipAddress`
-        ip_address_url = 'http://api.db-ip.com/v2/free/'.concat(current_ip)
-        ip_address = `curl #{ip_address_url}`
-        ip_address_hash = JSON.parse ip_address
-        country_code = ip_address_hash["countryCode"]
-
-        if (country_code == "CN")
-            opoo "You are located in China"
-            ENV["PUB_HOSTED_URL"] = "https://pub.flutter-io.cn"
-            ENV["FLUTTER_STORAGE_BASE_URL"] = "https://storage.flutter-io.cn"
-        end
-    end
+    binary "flutter/bin/dart"
+    binary 'flutter/bin/flutter'
 
     def postflight
         system "flutter doctor"
