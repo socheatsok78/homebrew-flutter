@@ -4,26 +4,28 @@ class Flutter < Formula
     homepage "https://flutter.io"
 
     stable do
-        version "stable"
+        version "2.0.3"
+        channel "stable"
 
         if OS.mac?
-            url "https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_v1.12.13+hotfix.5-stable.zip"
-            sha256 "78a0c5a757df74800e3c11632d4b8d2818904f0ceb075d9a2ab44ee74af6e67c"
+            url "https://storage.googleapis.com/flutter_infra/releases/#{channel}/macos/flutter_macos_#{version}-#{channel}.zip"
+            sha256 :no_check
         elsif OS.linux?
-            url "https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.12.13+hotfix.5-stable.tar.xz"
-            sha256 "d792c92895623da35e1a9ccd8bc2fe84c81dd72c2c54073f56fe70625866d800"
+            url "https://storage.googleapis.com/flutter_infra/releases/#{channel}/linux/flutter_linux_#{version}-#{channel}.tar.xz"
+            sha256 :no_check
         end
     end
 
     devel do
-        version "dev"
+        version "2.1.0-12.2.pre"
+        channel "beta"
 
         if OS.mac?
-            url "https://storage.googleapis.com/flutter_infra/releases/beta/macos/flutter_macos_v1.12.13+hotfix.6-beta.zip"
-            sha256 "05c7064de1f793ed1660422bc8f3fc8cdcaed38618bddbee785413b92d80c364"
+            url "https://storage.googleapis.com/flutter_infra/releases/#{channel}/macos/flutter_macos_#{version}-#{channel}.zip"
+            sha256 :no_check
         elsif OS.linux?
-            url "https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v1.12.13+hotfix.6-beta.tar.xz"
-            sha256 "ea115510234d1c963fd20b4df069458cde5f813e7e113e29f8d90f7cb16b4978"
+            url "https://storage.googleapis.com/flutter_infra/releases/#{channel}/linux/flutter_linux_#{version}-#{channel}.tar.xz"
+            sha256 :no_check
         end
     end
 

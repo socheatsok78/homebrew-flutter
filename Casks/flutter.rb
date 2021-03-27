@@ -2,14 +2,14 @@ cask 'flutter' do
     name "Flutter SDK"
     homepage "https://flutter.dev/"
 
-    version '1.20.4'
-    sha256 "08fcbcc9c902bc6f245d660b6d68f1da420fbdd5878902b5687961a5fb43e9f7"
+    version '2.0.3'
+    sha256 :no_check
 
     url "https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_#{version}-stable.zip"
 
     binary "flutter/bin/dart"
     binary 'flutter/bin/flutter'
-    
+
     auto_updates true
     depends_on macos: ">= :catalina"
 
